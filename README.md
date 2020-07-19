@@ -7,7 +7,7 @@ This action is simply a wrapper around the cf CLI. Every parameter passed to the
 ```
 ...
 - name: switch cf space
-  uses: mlucascardoso/cf-cli-action/cli@v1.0
+  uses: mlucascardoso/cf-cli-action@master
   with:
     args: target -o '<the-org-of-your-choice>' -s '<the-space-of-your-choice>'
 ...
