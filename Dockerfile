@@ -8,6 +8,7 @@ RUN apt-get update
 RUN apt-get install -y cf-cli
 RUN cf add-plugin-repo CF-Community https://plugins.cloudfoundry.org
 RUN cf install-plugin -r CF-Community "multiapps" -f
+RUN cf deploy -h
 
 ADD entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
