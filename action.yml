@@ -1,0 +1,6 @@
+name: 'Cloudfoundry Action'
+description: 'Github action that wraps the cloudfoundry cli with multiapps plugin'
+author: 'Lucas M Cardoso'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
