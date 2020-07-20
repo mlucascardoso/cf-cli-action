@@ -1,9 +1,9 @@
 #!/bin/sh
 set -e
 
-echo $USE_MULTI_APPS_PLUGIN
+echo $use_multi_apps_plugin
 
-if [ $USE_MULTI_APPS_PLUGIN = "true" ] 
+if [ $use_multi_apps_plugin = "true" ] 
 then
     sh -c "cf add-plugin-repo CF-Community https://plugins.cloudfoundry.org"
     sh -c "cf install-plugin -r CF-Community 'multiapps' -f"
