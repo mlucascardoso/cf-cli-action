@@ -1,8 +1,6 @@
 #!/bin/sh
 set -e
 
-echo $INPUT_USE_MULTI_APPS_PLUGIN
-
 if [ $INPUT_USE_MULTI_APPS_PLUGIN = "true" ] 
 then
     sh -c "cf add-plugin-repo CF-Community https://plugins.cloudfoundry.org"
