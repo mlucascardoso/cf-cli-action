@@ -1,6 +1,18 @@
-name: 'Cloudfoundry Action'
+name: 'cf cli action'
 description: 'Github action that wraps the cloudfoundry cli with multiapps plugin'
+branding:
+    icon: "upload-cloud"
+    color: "blue"
 author: 'Lucas M Cardoso'
+inputs:
+    use_multi_apps_plugin:
+      description: "Choose to use multiapps plugin or not"
+      required: false
+    command:
+        description: "Command to run using CF CLI"
+        required: true
 runs:
   using: 'docker'
   image: 'Dockerfile'
+  args:
+    - ${{ inputs.command }}
