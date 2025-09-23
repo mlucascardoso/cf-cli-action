@@ -1,0 +1,26 @@
+name: Test CF CLI Action
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: Test CF CLI Action
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: Test CF CLI without plugin
+        uses: ./
+        with:
+          command: 'version'
+          
+      - name: Test CF CLI with multiapps plugin
+        uses: ./
+        with:
+          use_multi_apps_plugin: 'true'
+          command: 'plugins'
