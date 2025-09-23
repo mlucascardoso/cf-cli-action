@@ -23,5 +23,5 @@ if [ "${INPUT_USE_MULTI_APPS_PLUGIN}" = "true" ]; then
 fi
 
 # Execute the CF command
-echo "Executing: cf $*"
-exec cf "$@"
+echo "Executing: cf $INPUT_COMMAND"
+exec sh -c "cf $INPUT_COMMAND"
