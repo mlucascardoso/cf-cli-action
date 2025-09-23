@@ -1,11 +1,19 @@
-FROM ubuntu:18.04
+FROM ubuntu:22.04
 
-RUN apt-get update
-RUN apt-get install -y ca-certificates jq
+# Install dependencies
+RUN apt-get update && apt-get install -y \
+    ca-certificates \
+    jq \
+    curl \
+    wget \
+    && rm -rf /var/lib/apt/lists/*
 
-RUN echo "deb [trusted=yes] https://packages.cloudfoundry.org/debian stable main" > /etc/apt/sources.list.d/cloudfoundry-cli.list
-RUN apt-get update
-RUN apt-get install -y cf-cli
+# Install Cloud Foundry CLI v8 (latest stable)
+RUN curl -fsSL "https://packages.cloudfoundry.org/stable?release=linux64-binary&version=v8&source=github" | tar -zxC /usr/local/bin \
+    && chmod +x /usr/local/bin/cf8 \
+    && ln -s /usr/local/bin/cf8 /usr/local/bin/cf
 
-ADD entrypoint.sh /entrypoint.sh
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
 ENTRYPOINT ["/entrypoint.sh"]
