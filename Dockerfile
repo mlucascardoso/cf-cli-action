@@ -1,12 +1,13 @@
-FROM debian:bullseye-slim
+# Use Alpine Linux to avoid Docker Hub rate limiting
+FROM alpine:3.18
 
 # Install dependencies
-RUN apt-get update && apt-get install -y \
+RUN apk add --no-cache \
     ca-certificates \
     jq \
     curl \
     wget \
-    && rm -rf /var/lib/apt/lists/*
+    bash
 
 # Install Cloud Foundry CLI v8 (latest stable)
 RUN curl -fsSL "https://packages.cloudfoundry.org/stable?release=linux64-binary&version=v8&source=github" | tar -zxC /usr/local/bin \
